@@ -114,8 +114,9 @@ class DataFileImporter:
         self.fail_on_error = fail_on_error
 
         self.batcher = client.batch(
-            batch_size=512,
-            callback=self._exit_on_error,
+            batch_size=16,
+            dynamic=True,
+            callback=self._exit_on_error
         )
 
         with open(data_path, 'r') as data_io:
